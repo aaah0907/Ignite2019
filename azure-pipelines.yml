@@ -32,17 +32,15 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
     Contents: |
-      **/*.dacpac
-      **/*.zip
+      **\*.Commands.WebApi.zip
+      **\*.Events.WebApi.zip
+      **\*.Queries.WebApi.zip
+      **\*.UI.Web.zip
+      **\*.dacpac
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     flattenFolders: true
 
@@ -57,6 +55,11 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)/src/PokerLeagueManager.Utilities/bin/$(buildConfiguration)'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/util'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 - task: PublishBuildArtifacts@1
   inputs:
