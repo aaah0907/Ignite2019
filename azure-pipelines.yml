@@ -40,7 +40,9 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: '**/*.dacpac'
+    Contents: |
+      **/*.dacpac
+      **/*.zip
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     flattenFolders: true
 
@@ -52,7 +54,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/src/PokerLeagueManager.Utilties/bin/$(buildConfiguration)'
+    SourceFolder: '$(Build.SourcesDirectory)/src/PokerLeagueManager.Utilities/bin/$(buildConfiguration)'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/util'
 
