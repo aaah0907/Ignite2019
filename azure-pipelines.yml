@@ -51,12 +51,12 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '/deploy'
+    SourceFolder: '$(Build.SourcesDirectory)/deploy'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '/src/PokerLeagueManager.Utilties/bin/Debug'
+    SourceFolder: '$(Build.SourcesDirectory)/src/PokerLeagueManager.Utilties/bin/Debug'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/util'
